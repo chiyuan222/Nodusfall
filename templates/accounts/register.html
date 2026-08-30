@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}注册 · {{ site_appearance.site_name|default:"源神小窝" }}{% endblock %}
+
+{% block content %}
+<h1>注册</h1>
+<form method="post" class="page-form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">注册</button>
+</form>
+<p class="muted">已有账号？<a href="{% url 'core:login' %}">直接登录</a></p>
+{% endblock %}

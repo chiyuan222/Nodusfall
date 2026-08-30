@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}搜索{% if q %}：{{ q }}{% endif %} · {{ site_appearance.site_name|default:"源神小窝" }}{% endblock %}
+
+{% block content %}
+<h1>搜索{% if q %}：{{ q }}{% endif %}</h1>
+
+{% if q %}
+  <h2>词条（{{ pages|length }}）</h2>
+  <ul>
+    {% for page in pages %}
+      <li>
+        <a href="{% url 'wiki:page_detail' page.namespace page.slug %}">{{ page.title }}</a>
+        <span class="muted"> {{ page.namespace }}:{{ page.slug }}</span>
+      </li>
+    {% empty %}
+      <li>没有匹配的词条。</li>
+    {% endfor %}
+  </ul>
+
+  <h2>视频（{{ videos|length }}）</h2>
+  <ul>
+    {% for item in videos %}
+      <li>
+        <a href="{% url 'media:media_detail' item.pk %}">{{ item.title }}</a>
+        <span class="muted"> {{ item.get_provider_display }}</span>
+      </li>
+    {% empty %}
+      <li>没有匹配的视频。</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="muted">输入关键词，搜索词条与视频。</p>
+{% endif %}
+{% endblock %}

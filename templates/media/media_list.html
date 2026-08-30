@@ -3,7 +3,12 @@
 {% block title %}视频库 · 织者档案馆{% endblock %}
 
 {% block content %}
-<h1>视频库</h1>
+<div class="toolbar">
+  <h1>视频库</h1>
+  {% if user.is_authenticated %}
+    <a href="{% url 'media:media_add' %}">收录视频</a>
+  {% endif %}
+</div>
 <ul>
   {% for item in items %}
     <li>

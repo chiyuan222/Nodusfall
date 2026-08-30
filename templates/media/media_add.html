@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}收录视频 · {{ site_appearance.site_name|default:"源神小窝" }}{% endblock %}
+
+{% block content %}
+<h1>收录视频</h1>
+<p class="muted">
+  粘贴 B 站或 YouTube 链接，系统会自动识别平台与视频 ID；收录后可到管理后台补充标题、封面与关联词条。
+</p>
+<form method="post" class="page-form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div class="toolbar">
+    <button type="submit">收录</button>
+    <a href="{% url 'media:media_list' %}">取消</a>
+  </div>
+</form>
+{% endblock %}

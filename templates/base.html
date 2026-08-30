@@ -17,6 +17,10 @@
       <a href="{% url 'core:home' %}">首页</a>
       <a href="{% url 'wiki:page_list' %}">资料库</a>
       <a href="{% url 'media:media_list' %}">视频库</a>
+      <form method="get" action="{% url 'core:search' %}" class="search-form">
+        <input type="search" name="q" placeholder="搜索词条/视频" value="{{ request.GET.q }}">
+        <button type="submit">搜索</button>
+      </form>
       {% if user.is_authenticated %}
         <a href="{% url 'wiki:page_create' %}">新建词条</a>
         <a href="/admin/">管理</a>
@@ -26,6 +30,7 @@
           <button type="submit" class="link-button">退出</button>
         </form>
       {% else %}
+        <a href="{% url 'accounts:register' %}">注册</a>
         <a href="{% url 'core:login' %}">登录</a>
       {% endif %}
     </nav>

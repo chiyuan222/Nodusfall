@@ -7,6 +7,7 @@ app_name = "core"
 
 urlpatterns = [
     path("", views.home, name="home"),
+    path("search/", views.search_view, name="search"),
     path(
         "accounts/login/",
         auth_views.LoginView.as_view(template_name="core/login.html"),

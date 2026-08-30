@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 
 from media.models import MediaItem
@@ -23,5 +24,19 @@ def home(request):
             "latest_videos": latest_videos,
         },
     )
+
+
+def search_view(request):
+    q = request.GET.get("q", "").strip()
+    pages = []
+    videos = []
+    if q:
+        pages = WikiPage.objects.filter(status="published").filter(
+            Q(title__icontains=q) | Q(content_md__icontains=q)
+        )
+        videos = MediaItem.objects.filter(
+            Q(title__icontains=q) | Q(author_name__icontains=q)
+        )
+    return render(request, "core/search.html", {"q": q, "pages": pages, "videos": videos})
 
 # Create your views here.

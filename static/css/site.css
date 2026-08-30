@@ -57,6 +57,27 @@ main,
 
 .site-nav a:hover { color: var(--accent); }
 
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 18px;
+}
+
+.search-form input[type="search"] {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  width: 170px;
+  font: inherit;
+}
+
+.search-form button {
+  padding: 6px 12px;
+}
+
 .container {
   max-width: 960px;
   margin: 0 auto;
