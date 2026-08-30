@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}首页 · 源神小窝{% endblock %}
+{% block title %}首页 · {{ site_appearance.site_name|default:"源神小窝" }}{% endblock %}
 
 {% block content %}
 <section class="hero-mini">
-  <h1>源神小窝</h1>
+  <h1>{{ site_appearance.site_name|default:"源神小窝" }}</h1>
   <p>《源初之结》（NODUSFALL）粉丝资料站 —— 收录设定、视频与资讯</p>
 </section>
 

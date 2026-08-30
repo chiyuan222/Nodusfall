@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -62,6 +63,8 @@ class SiteAppearance(models.Model):
         ("repeat", "原尺寸重复"),
     ]
 
+    site_name = models.CharField("站点名称", max_length=50, default="源神小窝")
+
     background_image = models.URLField(
         "背景图片链接",
         blank=True,
@@ -81,6 +84,12 @@ class SiteAppearance(models.Model):
         max_length=30,
         default="center center",
         help_text="如 center center / top left",
+    )
+    overlay_opacity = models.FloatField(
+        "背景遮罩不透明度",
+        default=0.55,
+        validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],
+        help_text="0 = 不遮罩，1 = 全黑遮罩；背景图存在时生效",
     )
 
     class Meta:

@@ -17,6 +17,22 @@ body {
   line-height: 1.7;
 }
 
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0b0d12;
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
 .site-header {
   display: flex;
   align-items: center;
