@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="540" viewBox="0 0 1280 540">
+  <defs>
+    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10131a"/>
+      <stop offset="1" stop-color="#24303a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="540" fill="url(#g3)"/>
+  <text x="640" y="250" font-family="Microsoft YaHei, sans-serif" font-size="42" fill="#c9a86a" text-anchor="middle">推荐位 3 · 示例图片</text>
+  <text x="640" y="310" font-family="Microsoft YaHei, sans-serif" font-size="20" fill="#8b8fa0" text-anchor="middle">轮播支持自动播放与左右切换</text>
+</svg>
