@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}织者档案馆{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{% url 'core:home' %}">织者档案馆</a>
+    <nav class="site-nav">
+      <a href="{% url 'core:home' %}">首页</a>
+      <a href="{% url 'wiki:page_list' %}">资料库</a>
+      <a href="{% url 'media:media_list' %}">视频库</a>
+      <a href="/admin/">管理</a>
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    本站为粉丝自发建设，与米哈游无关。《源初之结》（NODUSFALL）相关素材版权归米哈游所有。
+  </footer>
+</body>
+</html>

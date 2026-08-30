@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}首页 · 织者档案馆{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>源初之结 · 织者档案馆</h1>
+  <p>收集《源初之结》（NODUSFALL）的世界观、角色、神话生灵、视频与玩法资料的非官方粉丝 Wiki。</p>
+</section>
+
+<div class="grid">
+  <section>
+    <h2>最新词条</h2>
+    <ul>
+      {% for page in latest_pages %}
+        <li><a href="{% url 'wiki:page_detail' page.namespace page.slug %}">{{ page.title }}</a></li>
+      {% empty %}
+        <li>还没有词条，去管理后台添加。</li>
+      {% endfor %}
+    </ul>
+  </section>
+  <section>
+    <h2>最新视频</h2>
+    <ul>
+      {% for item in latest_videos %}
+        <li><a href="{% url 'media:media_detail' item.pk %}">{{ item.title }}</a></li>
+      {% empty %}
+        <li>还没有视频，去管理后台收录。</li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>
+{% endblock %}

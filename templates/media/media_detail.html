@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ item.title }} · 织者档案馆{% endblock %}
+
+{% block content %}
+<h1>{{ item.title }}</h1>
+<p class="muted">
+  {{ item.get_category_display }} · {{ item.get_provider_display }}
+  {% if item.author_name %} · {{ item.author_name }}{% endif %}
+  {% if item.published_at %} · {{ item.published_at|date:"Y-m-d" }}{% endif %}
+</p>
+
+{% if item.embed_url %}
+<div class="video-embed">
+  <iframe src="{{ item.embed_url }}" allowfullscreen title="{{ item.title }}"></iframe>
+</div>
+{% endif %}
+
+<p><a href="{{ item.source_url }}" target="_blank" rel="noopener">查看原始链接</a></p>
+{% if item.license_note %}<p class="muted">授权备注：{{ item.license_note }}</p>{% endif %}
+
+{% if item.pages.all %}
+  <h2>关联词条</h2>
+  <ul>
+    {% for page in item.pages.all %}
+      <li><a href="{% url 'wiki:page_detail' page.namespace page.slug %}">{{ page.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}

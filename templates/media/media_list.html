@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}视频库 · 织者档案馆{% endblock %}
+
+{% block content %}
+<h1>视频库</h1>
+<ul>
+  {% for item in items %}
+    <li>
+      <a href="{% url 'media:media_detail' item.pk %}">{{ item.title }}</a>
+      <span class="muted">{{ item.get_category_display }} · {{ item.get_provider_display }}</span>
+    </li>
+  {% empty %}
+    <li>还没有视频条目。</li>
+  {% endfor %}
+</ul>
+{% endblock %}

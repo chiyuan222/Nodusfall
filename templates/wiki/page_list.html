@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}资料库 · 织者档案馆{% endblock %}
+
+{% block content %}
+<h1>资料库</h1>
+<ul>
+  {% for page in pages %}
+    <li>
+      <a href="{% url 'wiki:page_detail' page.namespace page.slug %}">{{ page.title }}</a>
+      <span class="muted">{{ page.namespace }}:{{ page.slug }} · 更新于 {{ page.updated_at|date:"Y-m-d" }}</span>
+    </li>
+  {% empty %}
+    <li>还没有词条。</li>
+  {% endfor %}
+</ul>
+{% endblock %}
