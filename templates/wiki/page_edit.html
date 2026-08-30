@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load md %}
+
+{% block title %}{% if page %}编辑：{{ page.title }}{% else %}新建词条{% endif %} · 织者档案馆{% endblock %}
+
+{% block content %}
+<h1>{% if page %}编辑词条：{{ page.title }}{% else %}新建词条{% endif %}</h1>
+
+{% if preview_source %}
+  <section class="preview">
+    <h2>预览</h2>
+    <div class="page-content">{{ preview_source|markdown }}</div>
+  </section>
+{% endif %}
+
+<form method="post" class="page-form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div class="toolbar">
+    <button type="submit" name="save">保存</button>
+    <button type="submit" name="preview">预览</button>
+    <a href="{% if page %}{% url 'wiki:page_detail' page.namespace page.slug %}{% else %}{% url 'wiki:page_list' %}{% endif %}">取消</a>
+  </div>
+</form>
+{% endblock %}

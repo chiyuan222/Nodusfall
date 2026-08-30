@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load md %}
 
 {% block title %}{{ page.title }} · 织者档案馆{% endblock %}
 
@@ -7,8 +8,14 @@
 <p class="muted">
   {{ page.namespace }}:{{ page.slug }} · 更新于 {{ page.updated_at|date:"Y-m-d H:i" }}
 </p>
+<div class="toolbar">
+  {% if user.is_authenticated %}
+    <a href="{% url 'wiki:page_edit' page.namespace page.slug %}">编辑</a>
+  {% endif %}
+  <a href="{% url 'wiki:page_history' page.namespace page.slug %}">历史</a>
+</div>
 <div class="page-content">
-  {{ page.content_md|linebreaksbr }}
+  {{ page.content_md|markdown }}
 </div>
 {% if page.videos.all %}
   <h2>关联视频</h2>

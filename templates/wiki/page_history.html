@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}历史版本：{{ page.title }} · 织者档案馆{% endblock %}
+
+{% block content %}
+<h1>历史版本：{{ page.title }}</h1>
+<p><a href="{% url 'wiki:page_detail' page.namespace page.slug %}">返回词条</a></p>
+<ul>
+  {% for rev in revisions %}
+    <li>
+      <a href="{% url 'wiki:page_revision_detail' page.namespace page.slug rev.pk %}">修订 #{{ rev.pk }}</a>
+      — {{ rev.created_at|date:"Y-m-d H:i" }}
+      {% if rev.editor %}{{ rev.editor.username }}{% else %}未知{% endif %}
+      {% if rev.summary %}<span class="muted">（{{ rev.summary }}）</span>{% endif %}
+    </li>
+  {% empty %}
+    <li>暂无修订记录。</li>
+  {% endfor %}
+</ul>
+{% endblock %}
