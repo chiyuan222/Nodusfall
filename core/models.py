@@ -52,4 +52,42 @@ class OfficialLink(models.Model):
     def __str__(self):
         return self.name
 
+
+class SiteAppearance(models.Model):
+    """站点外观设置（单例，后台可修改背景等，前台立即生效）。"""
+
+    BACKGROUND_SIZE_CHOICES = [
+        ("cover", "铺满（cover）"),
+        ("contain", "完整显示（contain）"),
+        ("repeat", "原尺寸重复"),
+    ]
+
+    background_image = models.URLField(
+        "背景图片链接",
+        blank=True,
+        help_text="留空则使用纯色背景；可填图床图片地址",
+    )
+    background_color = models.CharField(
+        "背景颜色", max_length=20, default="#12141a", help_text="十六进制颜色，如 #12141a"
+    )
+    background_size = models.CharField(
+        "背景尺寸",
+        max_length=20,
+        choices=BACKGROUND_SIZE_CHOICES,
+        default="cover",
+    )
+    background_position = models.CharField(
+        "背景位置",
+        max_length=30,
+        default="center center",
+        help_text="如 center center / top left",
+    )
+
+    class Meta:
+        verbose_name = "站点外观"
+        verbose_name_plural = "站点外观"
+
+    def __str__(self):
+        return "站点外观设置"
+
 # Create your models here.

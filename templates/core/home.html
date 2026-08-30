@@ -50,6 +50,10 @@
       {% empty %}
       {% endfor %}
     </ul>
+    <div class="more-links">
+      <a href="{% url 'wiki:page_list' %}">更多词条 →</a>
+      <a href="{% url 'media:media_list' %}">更多视频 →</a>
+    </div>
   </section>
   <section class="panel">
     <h2>精华推荐</h2>

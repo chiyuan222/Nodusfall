@@ -10,8 +10,8 @@ def home(request):
     slides = HomeSlide.objects.filter(is_active=True)
     featured = FeaturedItem.objects.filter(is_active=True)
     official_links = OfficialLink.objects.all()
-    latest_pages = WikiPage.objects.filter(status="published")[:10]
-    latest_videos = MediaItem.objects.all()[:10]
+    latest_pages = WikiPage.objects.filter(status="published")[:8]
+    latest_videos = MediaItem.objects.all()[:8]
     return render(
         request,
         "core/home.html",

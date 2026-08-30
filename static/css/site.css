@@ -217,6 +217,7 @@ a { color: var(--accent); }
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 16px 20px;
+  min-height: 460px;
 }
 
 .panel h2 {
@@ -241,6 +242,13 @@ a { color: var(--accent); }
 .panel li:last-child { border-bottom: none; }
 
 .panel li .muted { display: block; }
+
+.more-links {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
 
 .toolbar {
   display: flex;

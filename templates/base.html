@@ -7,7 +7,7 @@
   <title>{% block title %}织者档案馆{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/site.css' %}">
 </head>
-<body>
+<body{% if site_appearance %} style="background-color: {{ site_appearance.background_color }};{% if site_appearance.background_image %} background-image: url('{{ site_appearance.background_image }}'); background-size: {{ site_appearance.background_size }}; background-position: {{ site_appearance.background_position }}; background-attachment: fixed;{% endif %}"{% endif %}>
   <header class="site-header">
     <a class="brand" href="{% url 'core:home' %}">源神小窝</a>
     <nav class="site-nav">

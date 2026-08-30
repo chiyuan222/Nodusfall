@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import FeaturedItem, HomeSlide, OfficialLink
+from .models import FeaturedItem, HomeSlide, OfficialLink, SiteAppearance
 
 
 @admin.register(HomeSlide)
@@ -19,5 +19,13 @@ class FeaturedItemAdmin(admin.ModelAdmin):
 class OfficialLinkAdmin(admin.ModelAdmin):
     list_display = ("name", "url", "order")
     list_editable = ("order",)
+
+
+@admin.register(SiteAppearance)
+class SiteAppearanceAdmin(admin.ModelAdmin):
+    """单例设置：已有记录时不允许重复添加。"""
+
+    def has_add_permission(self, request):
+        return not SiteAppearance.objects.exists()
 
 # Register your models here.
