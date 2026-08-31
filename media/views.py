@@ -2,13 +2,29 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import MediaItemForm
-from .models import MediaItem
+from .models import MEDIA_CATEGORY_CHOICES, MediaItem
 from .parser import parse_media_url
 
 
 def media_list(request):
+    categories = MEDIA_CATEGORY_CHOICES
+    selected = request.GET.get("category", "")
     items = MediaItem.objects.all()
-    return render(request, "media/media_list.html", {"items": items})
+    if selected:
+        items = items.filter(category=selected)
+    counts = {
+        key: MediaItem.objects.filter(category=key).count() for key, _ in categories
+    }
+    return render(
+        request,
+        "media/media_list.html",
+        {
+            "items": items,
+            "categories": categories,
+            "selected": selected,
+            "counts": counts,
+        },
+    )
 
 
 def media_detail(request, pk):

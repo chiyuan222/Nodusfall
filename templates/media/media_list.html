@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+{% load md %}
 
 {% block title %}视频库 · 织者档案馆{% endblock %}
 
@@ -9,14 +11,30 @@
     <a href="{% url 'media:media_add' %}">收录视频</a>
   {% endif %}
 </div>
-<ul>
-  {% for item in items %}
-    <li>
-      <a href="{% url 'media:media_detail' item.pk %}">{{ item.title }}</a>
-      <span class="muted">{{ item.get_category_display }} · {{ item.get_provider_display }}</span>
-    </li>
-  {% empty %}
-    <li>还没有视频条目。</li>
+
+<div class="chip-row">
+  <a class="chip{% if not selected %} active{% endif %}" href="{% url 'media:media_list' %}">全部</a>
+  {% for key, label in categories %}
+    <a class="chip{% if selected == key %} active{% endif %}"
+       href="{% url 'media:media_list' %}?category={{ key }}">{{ label }}（{{ counts|get_item:key }}）</a>
   {% endfor %}
-</ul>
+</div>
+
+<div class="media-grid">
+  {% for item in items %}
+    <a class="media-card" href="{% url 'media:media_detail' item.pk %}">
+      {% if item.cover_url %}
+        <img src="{{ item.cover_url }}" alt="{{ item.title }}" loading="lazy">
+      {% else %}
+        <img src="{% static 'img/media-placeholder.svg' %}" alt="{{ item.title }}" loading="lazy">
+      {% endif %}
+      <div class="media-info">
+        <strong>{{ item.title }}</strong>
+        <span class="muted">{{ item.get_category_display }} · {{ item.get_provider_display }}</span>
+      </div>
+    </a>
+  {% empty %}
+    <p class="muted">该分类下还没有视频条目。</p>
+  {% endfor %}
+</div>
 {% endblock %}
