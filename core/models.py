@@ -128,7 +128,7 @@ class SiteAppearance(models.Model):
         "站点标语",
         max_length=120,
         blank=True,
-        default="诸神入刃，斩尽死结",
+        default="《源初之结》（NODUSFALL）粉丝资料站 —— 收录设定、视频与资讯",
     )
 
     logo_image = models.URLField(
