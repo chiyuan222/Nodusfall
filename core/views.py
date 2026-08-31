@@ -1,9 +1,8 @@
 from django.db.models import Q
 from django.shortcuts import render
 
-from forum.models import Board
 from media.models import MediaItem
-from wiki.models import PageRevision, WikiPage
+from wiki.models import WikiPage
 
 from .models import FeaturedItem, HomeSlide, OfficialLink
 
@@ -23,10 +22,6 @@ def home(request):
             "official_links": official_links,
             "latest_pages": latest_pages,
             "latest_videos": latest_videos,
-            "page_count": WikiPage.objects.filter(status="published").count(),
-            "video_count": MediaItem.objects.count(),
-            "revision_count": PageRevision.objects.count(),
-            "board_count": Board.objects.count(),
         },
     )
 

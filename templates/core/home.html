@@ -5,21 +5,10 @@
 
 {% block content %}
 <section class="hero-mini">
-  <span class="site-badge">官方来源 / 非官方归档</span>
   <h1>{{ site_appearance.site_name|default:"源神小窝" }}</h1>
   <p>{{ site_appearance.site_slogan|default:"《源初之结》（NODUSFALL）粉丝资料站" }}</p>
 </section>
-<div class="ornament">✦</div>
 
-<section class="stats-row">
-  <div class="stat"><strong>{{ page_count }}</strong><span>词条</span></div>
-  <div class="stat"><strong>{{ video_count }}</strong><span>视频</span></div>
-  <div class="stat"><strong>{{ revision_count }}</strong><span>编辑记录</span></div>
-  <div class="stat"><strong>{{ board_count }}</strong><span>论坛版块</span></div>
-</section>
-
-<section class="home-section">
-  <div class="section-label">01 / RELEASE · 最新发布</div>
 {% if slides %}
 <section class="carousel" id="home-carousel">
   <div class="carousel-track">
@@ -42,10 +31,7 @@
 </section>
 <script src="{% static 'js/home-carousel.js' %}" defer></script>
 {% endif %}
-</section>
 
-<section class="home-section">
-  <div class="section-label">02 / LIBRARY · 浏览资料库</div>
 <div class="grid-3">
   <section class="panel">
     <h2>最新内容</h2>
@@ -93,15 +79,4 @@
     </ul>
   </section>
 </div>
-</section>
-
-<section class="home-section">
-  <div class="section-label">03 / RIGHTS · 权利与来源</div>
-  <div class="panel rights-note">
-    <p>
-      本站为粉丝自发建设的非官方资料站。页面中的名称、画面与设计的相关权利归米哈游（COGNOSPHERE）及各权利方所有，
-      本站仅用于资料整理、作品辨识与粉丝参考；新闻、商业、二次创作或再分发用途，请以官方许可和权利方要求为准。
-    </p>
-  </div>
-</section>
 {% endblock %}

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load md %}
 
 {% block title %}视频库 · 织者档案馆{% endblock %}
 
@@ -10,14 +9,6 @@
   {% if user.is_authenticated %}
     <a href="{% url 'media:media_add' %}">收录视频</a>
   {% endif %}
-</div>
-
-<div class="chip-row">
-  <a class="chip{% if not selected %} active{% endif %}" href="{% url 'media:media_list' %}">全部</a>
-  {% for key, label in categories %}
-    <a class="chip{% if selected == key %} active{% endif %}"
-       href="{% url 'media:media_list' %}?category={{ key }}">{{ label }}（{{ counts|get_item:key }}）</a>
-  {% endfor %}
 </div>
 
 <div class="media-grid">

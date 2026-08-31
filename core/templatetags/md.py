@@ -29,9 +29,3 @@ def render_markdown(text):
         return ""
     text = WIKILINK_RE.sub(_replace_wikilink, text)
     return mark_safe(_md.render(text))
-
-
-@register.filter
-def get_item(mapping, key):
-    """按 key 取字典值，用于模板中访问 counts 等字典。"""
-    return mapping.get(key, 0)
