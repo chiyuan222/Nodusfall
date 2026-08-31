@@ -27,6 +27,7 @@ class SiteAppearanceAdmin(admin.ModelAdmin):
 
     list_display = (
         "site_name",
+        "theme",
         "logo_image",
         "accent_color",
         "background_color",

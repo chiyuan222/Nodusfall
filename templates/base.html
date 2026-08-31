@@ -10,17 +10,17 @@
   {% if site_appearance %}
   <style>
     :root {
-      --accent: {{ site_appearance.accent_color }};
-      --panel: {{ site_appearance.panel_color }};
-      --text: {{ site_appearance.text_color }};
-      --muted: {{ site_appearance.muted_color }};
-      --border: {{ site_appearance.border_color }};
+      --accent: {{ site_appearance.colors.accent_color }};
+      --panel: {{ site_appearance.colors.panel_color }};
+      --text: {{ site_appearance.colors.text_color }};
+      --muted: {{ site_appearance.colors.muted_color }};
+      --border: {{ site_appearance.colors.border_color }};
     }
   </style>
   {% endif %}
 </head>
-<body{% if site_appearance %} style="background-color: {{ site_appearance.background_color }};{% if site_appearance.background_image %} background-image: url('{{ site_appearance.background_image }}'); background-size: {{ site_appearance.background_size }}; background-position: {{ site_appearance.background_position }}; background-attachment: fixed;{% endif %}"{% endif %}>
-  {% if site_appearance.background_image %}
+<body{% if site_appearance %} style="background-color: {{ site_appearance.background_color }};{% if site_appearance.background_url %} background-image: url('{{ site_appearance.background_url }}'); background-size: {{ site_appearance.background_size }}; background-position: {{ site_appearance.background_position }}; background-attachment: fixed;{% endif %}"{% endif %}>
+  {% if site_appearance.background_url %}
     <div class="bg-overlay" style="opacity: {{ site_appearance.overlay_opacity|floatformat:2 }}"></div>
   {% endif %}
   <header class="site-header">
