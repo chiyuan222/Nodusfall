@@ -43,8 +43,10 @@ main,
 }
 
 .brand {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
+  font-family: "STXingkai", "Kaiti SC", "KaiTi", "STKaiti", "Kai", serif;
+  letter-spacing: 3px;
   color: var(--accent);
   text-decoration: none;
   display: inline-flex;
@@ -136,6 +138,37 @@ main,
   border: 1px solid rgba(255, 255, 255, 0.25);
   display: inline-block;
   flex: none;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.board-card {
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.board-card:hover { border-color: var(--accent); }
+
+.board-card h2 {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 18px;
+}
+
+.board-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .container {
@@ -451,4 +484,5 @@ button:hover { filter: brightness(1.1); }
   .site-header { flex-direction: column; gap: 8px; }
   .grid { grid-template-columns: 1fr; }
   .grid-3 { grid-template-columns: 1fr; }
+  .board-grid { grid-template-columns: 1fr; }
 }

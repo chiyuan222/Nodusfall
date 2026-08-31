@@ -45,8 +45,10 @@
     </a>
     <nav class="site-nav">
       <a href="{% url 'core:home' %}">首页</a>
-      <a href="{% url 'wiki:page_list' %}">资料库</a>
+      <a href="{% url 'wiki:worldview' %}">世界观</a>
+      <a href="{% url 'wiki:page_list' %}">资料百科</a>
       <a href="{% url 'media:media_list' %}">视频库</a>
+      <a href="{% url 'forum:forum_home' %}">玩家论坛</a>
       <form method="get" action="{% url 'core:search' %}" class="search-form">
         <input type="search" name="q" placeholder="搜索词条/视频" value="{{ request.GET.q }}">
         <button type="submit">搜索</button>

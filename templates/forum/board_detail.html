@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{ board.name }} · 玩家论坛 · {{ site_appearance.site_name|default:"源神小窝" }}{% endblock %}
+
+{% block content %}
+<h1>{{ board.name }}</h1>
+<p class="muted">{{ board.description }}</p>
+<p><a href="{% url 'forum:forum_home' %}">← 返回论坛首页</a></p>
+<section class="panel">
+  <h2>主题列表</h2>
+  <p class="muted">本版块发帖功能即将开放，敬请期待。</p>
+</section>
+{% endblock %}

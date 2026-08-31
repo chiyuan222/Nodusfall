@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}世界观 · {{ site_appearance.site_name|default:"源神小窝" }}{% endblock %}
+
+{% block content %}
+<h1>世界观</h1>
+<p class="muted">神权陨落、秩序崩塌的世界设定资料。词条按“世界观”分类自动汇集。</p>
+<ul>
+  {% for page in pages %}
+    <li>
+      <a href="{% url 'wiki:page_detail' page.namespace page.slug %}">{{ page.title }}</a>
+      <span class="muted"> 更新于 {{ page.updated_at|date:"Y-m-d" }}</span>
+    </li>
+  {% empty %}
+    <li>
+      暂无世界观词条。可先到 <a href="{% url 'wiki:page_list' %}">资料百科</a> 创建词条，
+      然后在管理后台将其分类设为“世界观”。
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

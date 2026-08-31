@@ -25,6 +25,7 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("wiki/", include("wiki.urls")),
     path("media/", include("media.urls")),
+    path("forum/", include("forum.urls")),
 ]
 
 if settings.DEBUG:

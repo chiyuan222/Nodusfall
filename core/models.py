@@ -136,7 +136,7 @@ class SiteAppearance(models.Model):
         blank=True,
         help_text="留空则显示站点名称文字；可填图床 PNG/SVG 地址",
     )
-    logo_height = models.PositiveIntegerField("Logo 高度（px）", default=32)
+    logo_height = models.PositiveIntegerField("Logo 高度（px）", default=40)
 
     accent_color = models.CharField("主题色", max_length=20, default="#c9a86a")
     panel_color = models.CharField("面板色", max_length=20, default="#1b1e27")

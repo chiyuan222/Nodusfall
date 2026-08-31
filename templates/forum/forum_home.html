@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}玩家论坛 · {{ site_appearance.site_name|default:"源神小窝" }}{% endblock %}
+
+{% block content %}
+<h1>玩家论坛</h1>
+<p class="muted">玩家交流区：讨论、攻略、组队与同人创作。发帖功能即将开放。</p>
+<div class="board-grid">
+  {% for board in boards %}
+    <a class="board-card" href="{% url 'forum:board_detail' board.slug %}">
+      <h2>{{ board.name }}</h2>
+      <p>{{ board.description }}</p>
+    </a>
+  {% empty %}
+    <p>暂无版块。</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -5,6 +5,7 @@ from . import views
 app_name = "wiki"
 
 urlpatterns = [
+    path("worldview/", views.worldview, name="worldview"),
     path("new/", views.page_create, name="page_create"),
     path(
         "<str:namespace>/<slug:slug>/edit/",
