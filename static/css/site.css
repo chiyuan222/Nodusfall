@@ -37,6 +37,8 @@ main,
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 10px;
   padding: 14px 24px;
   border-bottom: 1px solid var(--border);
   background: var(--panel);
@@ -539,6 +541,14 @@ h1 {
   font-size: 15px;
   letter-spacing: 1.5px;
   transition: color 0.2s;
+}
+
+.site-nav a:first-child { margin-left: 0; }
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .site-nav a::after {
