@@ -63,57 +63,57 @@ class SiteAppearance(models.Model):
 
     THEME_CHOICES = [
         ("custom", "自定义（使用下方颜色）"),
-        ("dark-gold", "暗夜鎏金"),
-        ("ocean", "深海蓝"),
-        ("violet", "暮紫"),
-        ("forest", "森林绿"),
-        ("crimson", "绯红"),
-        ("sunset", "落日橙"),
+        ("dark-gold", "深空靛蓝"),
+        ("ocean", "海蓝"),
+        ("violet", "紫罗兰"),
+        ("forest", "薄荷绿"),
+        ("crimson", "珊瑚红"),
+        ("sunset", "琥珀橙"),
     ]
 
     THEME_PRESETS = {
         "custom": None,
         "dark-gold": {
-            "accent_color": "#c9a86a",
-            "panel_color": "#1b1e27",
-            "text_color": "#e6e3da",
-            "muted_color": "#8b8fa0",
-            "border_color": "#2c3140",
+            "accent_color": "#6366f1",
+            "panel_color": "#14161f",
+            "text_color": "#e8eaf2",
+            "muted_color": "#9aa0b0",
+            "border_color": "#262a38",
         },
         "ocean": {
-            "accent_color": "#5aa7d8",
-            "panel_color": "#14212e",
-            "text_color": "#e8f0f6",
-            "muted_color": "#7d94a6",
-            "border_color": "#244055",
+            "accent_color": "#38bdf8",
+            "panel_color": "#0f172a",
+            "text_color": "#e8f1fb",
+            "muted_color": "#8aa3bf",
+            "border_color": "#1e3a5f",
         },
         "violet": {
-            "accent_color": "#a98ad8",
-            "panel_color": "#221a33",
-            "text_color": "#ece5f5",
-            "muted_color": "#9a8ab0",
-            "border_color": "#352a4a",
+            "accent_color": "#a78bfa",
+            "panel_color": "#171322",
+            "text_color": "#ece9f8",
+            "muted_color": "#a39ab8",
+            "border_color": "#322a4a",
         },
         "forest": {
-            "accent_color": "#7fbf7f",
-            "panel_color": "#14241a",
-            "text_color": "#e6f2e6",
-            "muted_color": "#8aa890",
-            "border_color": "#244033",
+            "accent_color": "#34d399",
+            "panel_color": "#0f1a17",
+            "text_color": "#e6f4ef",
+            "muted_color": "#8fb3a7",
+            "border_color": "#1f3a32",
         },
         "crimson": {
-            "accent_color": "#d88a8a",
-            "panel_color": "#2a1616",
-            "text_color": "#f5e6e6",
-            "muted_color": "#b08a8a",
-            "border_color": "#462424",
+            "accent_color": "#fb7185",
+            "panel_color": "#1a1216",
+            "text_color": "#f9eef0",
+            "muted_color": "#bd9aa1",
+            "border_color": "#40242c",
         },
         "sunset": {
-            "accent_color": "#e8a86a",
-            "panel_color": "#2a1d12",
-            "text_color": "#f5ead9",
-            "muted_color": "#b39a7d",
-            "border_color": "#45331f",
+            "accent_color": "#fbbf24",
+            "panel_color": "#1a1510",
+            "text_color": "#f8f1e4",
+            "muted_color": "#b8a88c",
+            "border_color": "#3a3123",
         },
     }
 
@@ -138,11 +138,11 @@ class SiteAppearance(models.Model):
     )
     logo_height = models.PositiveIntegerField("Logo 高度（px）", default=40)
 
-    accent_color = models.CharField("主题色", max_length=20, default="#c9a86a")
-    panel_color = models.CharField("面板色", max_length=20, default="#1b1e27")
-    text_color = models.CharField("文字色", max_length=20, default="#e6e3da")
-    muted_color = models.CharField("次要文字色", max_length=20, default="#8b8fa0")
-    border_color = models.CharField("边框色", max_length=20, default="#2c3140")
+    accent_color = models.CharField("主题色", max_length=20, default="#6366f1")
+    panel_color = models.CharField("面板色", max_length=20, default="#14161f")
+    text_color = models.CharField("文字色", max_length=20, default="#e8eaf2")
+    muted_color = models.CharField("次要文字色", max_length=20, default="#9aa0b0")
+    border_color = models.CharField("边框色", max_length=20, default="#262a38")
 
     background_image = models.URLField(
         "背景图片链接",
@@ -157,7 +157,7 @@ class SiteAppearance(models.Model):
         help_text="直接上传 jpg/png 图片；与上方链接二选一",
     )
     background_color = models.CharField(
-        "背景颜色", max_length=20, default="#12141a", help_text="十六进制颜色，如 #12141a"
+        "背景颜色", max_length=20, default="#0f1117", help_text="十六进制颜色，如 #0f1117"
     )
     background_size = models.CharField(
         "背景尺寸",
