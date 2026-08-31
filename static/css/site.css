@@ -227,7 +227,8 @@ a { color: var(--accent); }
 
 .carousel-track {
   position: relative;
-  height: 380px;
+  aspect-ratio: 16 / 9;
+  width: 100%;
 }
 
 .carousel-slide {
@@ -450,5 +451,4 @@ button:hover { filter: brightness(1.1); }
   .site-header { flex-direction: column; gap: 8px; }
   .grid { grid-template-columns: 1fr; }
   .grid-3 { grid-template-columns: 1fr; }
-  .carousel-track { height: 220px; }
 }
