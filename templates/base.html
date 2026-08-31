@@ -17,6 +17,18 @@
       --border: {{ site_appearance.colors.border_color }};
     }
   </style>
+  <script>
+    window.THEME_PRESETS = {{ theme_presets_json|safe }};
+    try {
+      var savedTheme = localStorage.getItem("ysxw-visitor-theme");
+      if (savedTheme && window.THEME_PRESETS[savedTheme]) {
+        var root = document.documentElement;
+        Object.keys(window.THEME_PRESETS[savedTheme].colors).forEach(function (name) {
+          root.style.setProperty("--" + name.replace("_color", ""), window.THEME_PRESETS[savedTheme].colors[name]);
+        });
+      }
+    } catch (e) {}
+  </script>
   {% endif %}
 </head>
 <body{% if site_appearance %} style="background-color: {{ site_appearance.background_color }};{% if site_appearance.background_url %} background-image: url('{{ site_appearance.background_url }}'); background-size: {{ site_appearance.background_size }}; background-position: {{ site_appearance.background_position }}; background-attachment: fixed;{% endif %}"{% endif %}>
@@ -52,7 +64,21 @@
         <a href="{% url 'core:login' %}">登录</a>
       {% endif %}
     </nav>
+    <div class="theme-switcher" id="theme-switcher">
+      <button type="button" class="theme-toggle">主题 ▾</button>
+      <div class="theme-menu" hidden>
+        <button type="button" data-theme="" class="theme-option">跟随站点默认</button>
+        {% for key, preset in theme_presets.items %}
+          <button type="button" data-theme="{{ key }}" class="theme-option">
+            <span class="swatch" style="background: {{ preset.colors.accent_color }}"></span>
+            <span class="swatch" style="background: {{ preset.colors.panel_color }}"></span>
+            {{ preset.label }}
+          </button>
+        {% endfor %}
+      </div>
+    </div>
   </header>
+  <script src="{% static 'js/theme-switcher.js' %}" defer></script>
   <main class="container">
     {% block content %}{% endblock %}
   </main>

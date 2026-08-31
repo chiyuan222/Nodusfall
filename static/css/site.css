@@ -82,6 +82,62 @@ main,
   padding: 6px 12px;
 }
 
+.theme-switcher {
+  position: relative;
+  margin-left: 18px;
+}
+
+.theme-toggle {
+  background: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.theme-toggle.open { border-color: var(--accent); }
+
+.theme-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px;
+  min-width: 180px;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  color: var(--text);
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.theme-option:hover { background: var(--border); }
+
+.theme-option.active { outline: 1px solid var(--accent); }
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: inline-block;
+  flex: none;
+}
+
 .container {
   max-width: 1320px;
   margin: 0 auto;
