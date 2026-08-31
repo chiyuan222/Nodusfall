@@ -64,6 +64,25 @@ class SiteAppearance(models.Model):
     ]
 
     site_name = models.CharField("站点名称", max_length=50, default="源神小窝")
+    site_slogan = models.CharField(
+        "站点标语",
+        max_length=120,
+        blank=True,
+        default="《源初之结》（NODUSFALL）粉丝资料站 —— 收录设定、视频与资讯",
+    )
+
+    logo_image = models.URLField(
+        "Logo 图片链接",
+        blank=True,
+        help_text="留空则显示站点名称文字；可填图床 PNG/SVG 地址",
+    )
+    logo_height = models.PositiveIntegerField("Logo 高度（px）", default=32)
+
+    accent_color = models.CharField("主题色", max_length=20, default="#c9a86a")
+    panel_color = models.CharField("面板色", max_length=20, default="#1b1e27")
+    text_color = models.CharField("文字色", max_length=20, default="#e6e3da")
+    muted_color = models.CharField("次要文字色", max_length=20, default="#8b8fa0")
+    border_color = models.CharField("边框色", max_length=20, default="#2c3140")
 
     background_image = models.URLField(
         "背景图片链接",

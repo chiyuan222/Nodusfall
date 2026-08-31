@@ -25,7 +25,14 @@ class OfficialLinkAdmin(admin.ModelAdmin):
 class SiteAppearanceAdmin(admin.ModelAdmin):
     """单例设置：已有记录时不允许重复添加。"""
 
-    list_display = ("site_name", "background_color", "background_image", "overlay_opacity")
+    list_display = (
+        "site_name",
+        "logo_image",
+        "accent_color",
+        "background_color",
+        "background_image",
+        "overlay_opacity",
+    )
 
     def has_add_permission(self, request):
         return not SiteAppearance.objects.exists()

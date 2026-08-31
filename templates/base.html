@@ -5,14 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{{ site_appearance.site_name|default:"源神小窝" }}{% endblock %}</title>
+  <link rel="icon" href="{% if site_appearance.logo_image %}{{ site_appearance.logo_image }}{% else %}{% static 'img/favicon.svg' %}{% endif %}">
   <link rel="stylesheet" href="{% static 'css/site.css' %}">
+  {% if site_appearance %}
+  <style>
+    :root {
+      --accent: {{ site_appearance.accent_color }};
+      --panel: {{ site_appearance.panel_color }};
+      --text: {{ site_appearance.text_color }};
+      --muted: {{ site_appearance.muted_color }};
+      --border: {{ site_appearance.border_color }};
+    }
+  </style>
+  {% endif %}
 </head>
 <body{% if site_appearance %} style="background-color: {{ site_appearance.background_color }};{% if site_appearance.background_image %} background-image: url('{{ site_appearance.background_image }}'); background-size: {{ site_appearance.background_size }}; background-position: {{ site_appearance.background_position }}; background-attachment: fixed;{% endif %}"{% endif %}>
   {% if site_appearance.background_image %}
     <div class="bg-overlay" style="opacity: {{ site_appearance.overlay_opacity|floatformat:2 }}"></div>
   {% endif %}
   <header class="site-header">
-    <a class="brand" href="{% url 'core:home' %}">{{ site_appearance.site_name|default:"源神小窝" }}</a>
+    <a class="brand" href="{% url 'core:home' %}">
+      {% if site_appearance.logo_image %}
+        <img class="brand-logo" src="{{ site_appearance.logo_image }}" alt="{{ site_appearance.site_name|default:'源神小窝' }}" style="height: {{ site_appearance.logo_height }}px;">
+      {% else %}
+        {{ site_appearance.site_name|default:"源神小窝" }}
+      {% endif %}
+    </a>
     <nav class="site-nav">
       <a href="{% url 'core:home' %}">首页</a>
       <a href="{% url 'wiki:page_list' %}">资料库</a>

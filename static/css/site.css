@@ -47,7 +47,11 @@ main,
   font-weight: 700;
   color: var(--accent);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
+
+.brand-logo { display: block; }
 
 .site-nav a {
   color: var(--text);
